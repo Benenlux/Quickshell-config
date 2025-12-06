@@ -1,87 +1,93 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Services.UPower // <--- Required for Battery Data
-import ".." // Import AppStyle (if you have it)
+import Quickshell.Services.UPower
+import ".."
 
 Item {
     id: root
 
     // 1. Get the main battery device
     property var battery: UPower.displayDevice
-    property var percentage: battery.percentage * 100
-    // 2. Helper to determine color based on percentage
-    // Returns a base color (Red, Orange, or Green)
+    property var percentage: Math.min(battery.percentage * 100)
     property color baseColor: {
         if (percentage <= 20)
-            return "#fb4934"; // Red (Low)
+            return AppStyle.red_dim; // Red (Low)
         if (percentage <= 50)
-            return "#d79921"; // Yellow/Orange (Med)
-        return "#b8bb26"; // Green (High)
+            return AppStyle.orange_dim; // Yellow/Orange (Med)
+        return AppStyle.green_dim; // Green (High)
     }
 
-    implicitWidth: 100
-    implicitHeight: 14
+    implicitWidth: 15
+    implicitHeight: 35
 
     // Background (The "Empty" part of the bar)
     Rectangle {
         anchors.fill: parent
-        color: "#3c3836" // Dark gray background
+        color: "#3c3836"
         radius: 6
 
-        // Foreground (The "Filled" part)
-        Rectangle {
-            id: fill
-            height: parent.height
-            radius: 6
+        Item {
+            id: mask
+            width: parent.width
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: root.height * (Math.min(percentage, 100) / 100)
 
-            // 3. Calculate Width
-            // UPower percentage is usually 0-100. We clamp it just in case.
-            width: parent.width * (Math.min(percentage, 100) / 100)
+            clip: true
 
-            // 4. The Gradient Effect
-            gradient: Gradient {
-                orientation: Gradient.Horizontal
-
-                // Left side: Slightly darker version of the base color
-                GradientStop {
-                    position: 0.0
-                    color: Qt.darker(root.baseColor, 1.2)
-                }
-
-                // Right side: The pure base color
-                GradientStop {
-                    position: 1.0
-                    color: root.baseColor
-                }
-            }
-
-            // Optional: Animation when level changes
-            Behavior on width {
+            // Animation for smooth movement
+            Behavior on height {
                 NumberAnimation {
-                    duration: 500
-                    easing.type: Easing.OutCubic
+                    duration: 300
+                    easing.type: Easing.OutQuad
                 }
             }
-            Behavior on color {
-                ColorAnimation {
-                    duration: 200
+
+            // 3. The Full-Size Gradient Bar
+            // This stays full size so the colors never "squish"
+            Rectangle {
+                width: root.width
+                height: root.height
+                radius: 6
+                anchors.bottom: parent.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                gradient: Gradient {
+                    orientation: Gradient.Vertical
+
+                    // 0% - Start Red
+                    GradientStop {
+                        position: 1.0
+                        color: AppStyle.red_dim
+                    }
+
+                    // 40% - Fade to Orange
+                    GradientStop {
+                        position: 0.6
+                        color: AppStyle.yellow_dim
+                    }
+
+                    // 100% - End Green
+                    GradientStop {
+                        position: 0.0
+                        color: AppStyle.aqua_dim
+                    }
                 }
             }
         }
 
-        // 5. Text Label Overlay (e.g. "54%")
+        // 4. Percentage Text Overlay
         Text {
             anchors.centerIn: parent
-            text: percentage + "%"
-            color: "white"
-            font.bold: true
-            font.pixelSize: 12
-            renderType: Text.NativeRendering
+            text: Math.round(percentage) + "%"
 
-            // Add a slight shadow so text is readable on bright yellow
+            // Add a shadow so text is readable over any color
+            color: "white"
             style: Text.Outline
             styleColor: "black"
+            font.bold: true
+            font.pixelSize: 12
         }
     }
 }
