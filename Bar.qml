@@ -3,6 +3,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import "./bar-widgets/"
+import "./components/"
 
 Scope {
     id: root
@@ -27,6 +28,8 @@ Scope {
             ClockWidget {
                 anchors.centerIn: parent
             }
+
+            Battery {}
         }
     }
 }
