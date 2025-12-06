@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import "./bar-widgets/"
 import "./components/"
+import "."
 
 Scope {
     id: root
@@ -28,8 +29,20 @@ Scope {
             ClockWidget {
                 anchors.centerIn: parent
             }
+            Rectangle {
+                color: AppStyle.gray_dim
+                implicitWidth: bat.implicitWidth + 10
+                implicitHeight: 25
+                radius: 7
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
 
-            Battery {}
+                Battery {
+                    id: bat
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
         }
     }
 }

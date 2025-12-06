@@ -7,7 +7,7 @@ Rectangle {
     radius: 7
 
     implicitWidth: layout.implicitWidth + 10
-    implicitHeight: layout.implicitHeight + 5
+    implicitHeight: 25
 
     // 2. Redirect children to the Column
     default property alias content: layout.data
