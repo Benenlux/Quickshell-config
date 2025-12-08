@@ -17,7 +17,6 @@ Scope {
             required property var modelData
             screen: modelData
             color: "transparent"
-            height: 40
 
             anchors {
                 top: true
@@ -25,22 +24,31 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 30
-            ClockWidget {
-                anchors.centerIn: parent
-            }
-            Rectangle {
-                color: AppStyle.gray_dim
-                implicitWidth: bat.implicitWidth + 10
-                implicitHeight: 25
-                radius: 7
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-
-                Battery {
-                    id: bat
+            implicitHeight: 40
+            Item {
+                id: panelContent
+                anchors.fill: parent
+                anchors.rightMargin: 6
+                anchors.leftMargin: 6
+                ClockWidget {
+                    anchors.centerIn: parent
+                }
+                Rectangle {
+                    id: connectivity_container
+                    color: AppStyle.blue_dim
+                    implicitWidth: mainLayout.implicitWidth + 10
+                    implicitHeight: mainLayout.implicitHeight + 4
+                    radius: 7
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
+                    RowLayout {
+                        id: mainLayout
+                        anchors.centerIn: parent
+                        spacing: 5
+                        Battery {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                    }
                 }
             }
         }
