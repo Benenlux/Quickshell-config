@@ -24,7 +24,7 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 40
+            implicitHeight: 50
             Item {
                 id: panelContent
                 anchors.fill: parent
@@ -35,9 +35,9 @@ Scope {
                 }
                 Rectangle {
                     id: connectivity_container
-                    color: AppStyle.blue_dim
+                    color: AppStyle.bg1
                     implicitWidth: mainLayout.implicitWidth + 10
-                    implicitHeight: mainLayout.implicitHeight + 4
+                    implicitHeight: mainLayout.implicitHeight + 10
                     radius: 7
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
@@ -45,8 +45,9 @@ Scope {
                         id: mainLayout
                         anchors.centerIn: parent
                         spacing: 5
+
                         Battery {
-                            anchors.verticalCenter: parent.verticalCenter
+                            Layout.alignment: Qt.AlignVCenter
                         }
                     }
                 }
