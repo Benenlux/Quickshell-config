@@ -37,7 +37,7 @@ Scope {
                     id: connectivity_container
                     color: AppStyle.bg1
                     implicitWidth: mainLayout.implicitWidth + 10
-                    implicitHeight: mainLayout.implicitHeight + 10
+                    implicitHeight: mainLayout.implicitHeight + 15
                     radius: 7
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
@@ -49,6 +49,7 @@ Scope {
                         Battery {
                             Layout.alignment: Qt.AlignVCenter
                         }
+                        Clock {}
                     }
                 }
             }
