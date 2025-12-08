@@ -3,64 +3,34 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.UPower
 import ".."
+import "."
+import Quickshell.Widgets
 
 Item {
     id: root
+    implicitWidth: row.implicitWidth
+    implicitHeight: row.implicitHeight
     property var battery: UPower.displayDevice
-    property var percentage: Math.min(battery.percentage * 100)
+    property bool isPluggedIn: battery.state === UPowerDeviceState.Charging || battery.state === UPowerDeviceState.FullyCharged
+    property string iconStep: {
+        var steppedLevel = Math.floor(battery.percentage * 100 / 10) * 10;
+        return steppedLevel.toString().padStart(3, "0");
+    }
 
-    implicitWidth: 70
-    implicitHeight: 10
-
-    // Background
-    Rectangle {
-        implicitWidth: parent.implicitWidth - 10
-        height: parent.implicitHeight
-        color: "#3c3836"
-        radius: 6
-
-        Item {
-            id: mask
-            height: parent.width
-
-            width: root.width * (Math.min(percentage, 100) / 100)
-
-            clip: true
-
-            Behavior on width {
-                NumberAnimation {
-                    duration: 300
-                    easing.type: Easing.OutQuad
-                }
-            }
-
-            // The Full-Size Gradient Bar
-            Rectangle {
-                width: parent.width
-                height: root.height
-                radius: 6
-                gradient: Gradient {
-                    orientation: Gradient.Horizontal
-
-                    // 0% - Start Red
-                    GradientStop {
-                        position: 1.0
-                        color: AppStyle.green
-                    }
-
-                    // 50% - Fade to Orange
-                    GradientStop {
-                        position: 0.5
-                        color: AppStyle.yellow_dim
-                    }
-
-                    // 100% - End Green
-                    GradientStop {
-                        position: 0.2
-                        color: AppStyle.red
-                    }
-                }
-            }
+    RowLayout {
+        id: row
+        anchors.fill: parent
+        Label {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.fillHeight: true
+            text: battery.percentage * 100 + "%"
+            verticalAlignment: Text.AlignVCenter
+        }
+        IconImage {
+            Layout.alignment: Qt.AlignVCenter
+            width: 25
+            height: 25
+            source: Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : ""))
         }
     }
 }
