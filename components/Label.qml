@@ -3,8 +3,8 @@ import ".."
 
 Text {
     font.family: "Inter"
-    font.pixelSize: 15
+    font.pixelSize: 13
     font.bold: true
-    color: AppStyle.fg2
+    color: AppStyle.fg1
     renderType: Text.NativeRendering
 }
