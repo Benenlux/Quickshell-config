@@ -24,7 +24,7 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 50
+            implicitHeight: 40
             Item {
                 id: panelContent
                 anchors.fill: parent
@@ -44,6 +44,7 @@ Scope {
                         anchors.centerIn: parent
                         spacing: 5
                         Wifi {}
+                        Bluetooth {}
                         Battery {
                             Layout.alignment: Qt.AlignVCenter
                         }
