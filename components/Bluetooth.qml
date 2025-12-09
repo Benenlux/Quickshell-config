@@ -1,10 +1,8 @@
 import QtQuick
 
-import QtQuick.Controls
 import Quickshell
 import Quickshell.Bluetooth // The module name is correct now
 import "."
-import Quickshell.Widgets
 
 HoverPill {
     id: root
