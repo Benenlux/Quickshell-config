@@ -1,10 +1,8 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import QtQuick.Layouts
+
 import "./bar-widgets/"
-import "./components/"
-import "."
 
 Scope {
     id: root
