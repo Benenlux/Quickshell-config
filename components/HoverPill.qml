@@ -14,7 +14,6 @@ Item {
     property color backgroundColor: AppStyle.bg3
     property color textColor: AppStyle.fg1
 
-    // --- Internal Logic ---
     property bool isExtended: false
 
     implicitWidth: isExtended ? row.implicitWidth + 16 : row.implicitWidth + 10
@@ -36,7 +35,6 @@ Item {
         onTriggered: root.isExtended = false
     }
 
-    // --- Visuals ---
     Rectangle {
         id: bgRect
         anchors.fill: parent
