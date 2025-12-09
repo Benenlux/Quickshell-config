@@ -13,6 +13,7 @@ HoverPill {
         var steppedLevel = Math.floor(battery.percentage * 100 / 10) * 10;
         return steppedLevel.toString().padStart(3, "0");
     }
+    //FIX: check for power profile support to prevent undefined behavior
     icon: {
         if (profile === 0)
             return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : "") + "-profile-powersave");
@@ -23,6 +24,7 @@ HoverPill {
         else
             return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : ""));
     }
+    //FIX: check for power profile support to check if it can be changed
     MouseArea {
         anchors.fill: parent
         onClicked: {
