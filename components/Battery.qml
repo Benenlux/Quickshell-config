@@ -1,19 +1,36 @@
 import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.UPower
-import ".."
 import "."
 
 HoverPill {
-
+    id: root
     property var battery: UPower.displayDevice
     property bool isPluggedIn: battery.state === UPowerDeviceState.Charging || battery.state === UPowerDeviceState.FullyCharged
+    property var profile: battery.PowerProfiles.profile
     property bool isExtended: false
     property string iconStep: {
         var steppedLevel = Math.floor(battery.percentage * 100 / 10) * 10;
         return steppedLevel.toString().padStart(3, "0");
     }
-    icon: Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : ""))
+    icon: {
+        if (profile === 0)
+            return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : "") + "-profile-powersave");
+        if (profile === 1)
+            return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : "") + "-profile-balanced");
+        if (profile === 2)
+            return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : "") + "-profile-performance");
+        else
+            return Quickshell.iconPath("battery-" + (iconStep) + (isPluggedIn ? "-charging" : ""));
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            if (root.profile === 2)
+                root.profile = 0;
+            else
+                root.profile = root.profile + 1;
+        }
+    }
     text: battery.percentage * 100 + "%"
 }
