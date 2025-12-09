@@ -28,10 +28,10 @@ HoverPill {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if (root.profile === 2)
-                root.profile = 0;
+            if (UPower.displayDevice.PowerProfiles.profile === 2)
+                UPower.displayDevice.PowerProfiles.profile = 0;
             else
-                root.profile = root.profile + 1;
+                UPower.displayDevice.PowerProfiles.profile = UPower.displayDevice.PowerProfiles.profile + 1;
         }
     }
     text: battery.percentage * 100 + "%"
