@@ -24,6 +24,7 @@ Scope {
 
             implicitHeight: 40
             ConnectivityContainer {}
+            MainContainer {}
         }
     }
 }
