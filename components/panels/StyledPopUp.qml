@@ -76,7 +76,7 @@ PopupWindow {
 
             anchors.fill: parent
 
-            color: AppStyle.bg1
+            color: AppStyle.bg_s
             radius: 6
             border.color: AppStyle.bg3
 
