@@ -39,10 +39,12 @@ Item {
         windowId: panelContent.panelWindow
         anchorItem: connectivity_container
         offsetY: 35
-        Text {
-            anchors.centerIn: parent
-            text: "I grew!"
-            color: "white"
+        RowLayout {
+            Text {
+                text: "I grew!"
+                color: "white"
+            }
+            StyledIconButton {}
         }
     }
 }

@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
-import "./bar-widgets/"
+import "./barwidgets/"
 
 Scope {
     id: root

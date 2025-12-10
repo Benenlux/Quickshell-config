@@ -10,10 +10,10 @@ HoverPill components/HoverPill.qml
 Label components/Label.qml
 Wifi components/Wifi.qml
 LogoButton components/LogoButton.qml
+StyledIconButton components/StyledIconButton.qml
 
-
-ConnectivityContainer bar-widgets/ConnectivityContainer
-MainContainer bar-widgets/MainContainer.qml
+ConnectivityContainer barwidgets/ConnectivityContainer
+MainContainer barwidgets/MainContainer.qml
 
 Bar Bar.qml
 Shell shell.qml
