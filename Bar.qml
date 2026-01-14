@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
-import "./bar-widgets/"
+import "./barwidgets/"
 
 Scope {
     id: root
@@ -12,10 +12,10 @@ Scope {
         model: Quickshell.screens
 
         PanelWindow {
+            id: barWindow
             required property var modelData
             screen: modelData
             color: "transparent"
-
             anchors {
                 top: true
                 left: true
@@ -24,6 +24,10 @@ Scope {
 
             implicitHeight: 40
             ConnectivityContainer {}
+            MainContainer {
+                id: container
+                panelWindow: barWindow
+            }
         }
     }
 }

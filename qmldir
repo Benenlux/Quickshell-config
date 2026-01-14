@@ -1,0 +1,19 @@
+module GruvShell
+
+singleton WifiGetter utils/WifiGetter.qml
+singleton AppStyle AppStyle.qml
+
+Battery components/Battery.qml
+Bluetooth components/Bluetooth.qml
+Clock components/Clock.qml
+HoverPill components/HoverPill.qml
+Label components/Label.qml
+Wifi components/Wifi.qml
+LogoButton components/LogoButton.qml
+StyledIconButton components/StyledIconButton.qml
+
+ConnectivityContainer barwidgets/ConnectivityContainer
+MainContainer barwidgets/MainContainer.qml
+
+Bar Bar.qml
+Shell shell.qml

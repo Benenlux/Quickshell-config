@@ -24,9 +24,7 @@ Item {
             spacing: 5
             Wifi {}
             Bluetooth {}
-            Battery {
-                Layout.alignment: Qt.AlignVCenter
-            }
+            Battery {}
             Clock {}
         }
     }
