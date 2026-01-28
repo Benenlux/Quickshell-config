@@ -12,8 +12,8 @@ PopupWindow {
     property var offsetY: 0
     default property alias content: containerLayout.data
 
-    width: containerLayout.implicitWidth + 10
-    height: containerLayout.implicitHeight + 20
+    implicitWidth: containerLayout.implicitWidth + 20
+    implicitHeight: containerLayout.implicitHeight + 20
 
     color: "transparent"
 
@@ -24,8 +24,8 @@ PopupWindow {
             var pos = anchorItem.mapToItem(windowId.contentItem, 0, 0);
             anchor.rect.x = pos.x + offsetX;
             anchor.rect.y = pos.y + offsetY;
-            anchor.rect.width = anchorItem.width;
-            anchor.rect.height = anchorItem.height;
+            anchor.rect.implicitWidth = anchorItem.implicitWidth;
+            anchor.rect.implicitHeight = anchorItem.implicitHeight;
         }
     }
     MouseArea {
@@ -49,23 +49,22 @@ PopupWindow {
     // Panel content
     Item {
         id: clipper
-
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.fill: parent
+        anchors.centerIn: parent
 
         clip: true
 
-        width: root.visible ? root.width : 0
-        height: root.visible ? root.height : 0
+        implicitWidth: root.visible ? root.width : 0
+        implicitHeight: root.visible ? root.height : 0
 
-        Behavior on width {
+        Behavior on implicitWidth {
             NumberAnimation {
                 duration: 500
                 easing.type: Easing.OutQuart
             }
         }
 
-        Behavior on height {
+        Behavior on implicitHeight {
             NumberAnimation {
                 duration: 500
                 easing.type: Easing.OutQuart
@@ -73,16 +72,20 @@ PopupWindow {
         }
 
         Rectangle {
-
+            anchors.centerIn: parent
             anchors.fill: parent
 
             color: AppStyle.bg_s
             radius: 6
             border.color: AppStyle.bg3
-
-            ColumnLayout {
+            Item {
                 id: containerLayout
-                spacing: 5
+                anchors.centerIn: parent
+                implicitWidth: children.length > 0 ? children[0].implicitWidth : 0
+                implicitHeight: children.length > 0 ? children[0].implicitHeight : 0
+                anchors.margins: 10
+                width: implicitWidth
+                height: implicitHeight
             }
         }
     }

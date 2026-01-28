@@ -39,12 +39,53 @@ Item {
         windowId: panelContent.panelWindow
         anchorItem: connectivity_container
         offsetY: 35
-        RowLayout {
-            Text {
-                text: "I grew!"
-                color: "white"
+        GridLayout {
+            rowSpacing: 10
+            columnSpacing: 10
+            columns: 4
+
+            Rectangle {
+                Layout.columnSpan: 2
+                Layout.rowSpan: 2
+
+                Layout.preferredWidth: 200
+                Layout.preferredHeight: 100
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+                color: "lightgrey"
+                border.color: "black"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "100x100"
+                }
             }
-            StyledIconButton {}
+
+            StyledIconButton {
+                Layout.preferredWidth: 50
+                Layout.preferredHeight: 50
+                iconSource: 'system-shutdown'
+            }
+
+            // Item 4 (Top row, col 4)
+            StyledIconButton {
+                Layout.preferredWidth: 50
+                Layout.preferredHeight: 50
+                iconSource: 'system-reboot'
+            }
+
+            // Item 5 (Row 2, col 3 - since the big rect takes Row 2, Cols 1&2)
+            StyledIconButton {
+                Layout.preferredWidth: 50
+                Layout.preferredHeight: 50
+                iconSource: 'system-suspend'
+            }
+            StyledIconButton {
+                Layout.preferredWidth: 50
+                Layout.preferredHeight: 50
+                iconSource: 'lock'
+            }
         }
     }
 }

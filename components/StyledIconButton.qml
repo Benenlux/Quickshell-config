@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Widgets
 import ".."
@@ -6,22 +7,22 @@ import ".."
 Item {
     id: root
     property color backgroundColor: AppStyle.bg1
-
+    property var iconSource
     implicitWidth: buttonContent.implicitWidth
     implicitHeight: buttonContent.implicitWidth
 
     Rectangle {
         id: buttonContent
-        implicitHeight: 40
-        implicitWidth: 50
-        anchors.centerIn: parent
+        anchors.fill: parent
         radius: 6
-        color: backgroundColor
+        color: root.backgroundColor
+
         IconImage {
             anchors.centerIn: parent
-            width: 30
-            height: 30
-            source: Quickshell.iconPath('network-wireless-signal-none')
+            width: root.width * 0.8
+            height: root.width * 0.8
+
+            source: Quickshell.iconPath(root.iconSource)
         }
     }
 }

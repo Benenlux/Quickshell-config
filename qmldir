@@ -16,4 +16,4 @@ ConnectivityContainer barwidgets/ConnectivityContainer
 MainContainer barwidgets/MainContainer.qml
 
 Bar Bar.qml
-Shell shell.qml
+Shell Shell.qml
