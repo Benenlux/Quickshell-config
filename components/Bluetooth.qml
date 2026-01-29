@@ -2,7 +2,7 @@ import QtQuick
 
 import QtQuick.Controls
 import Quickshell
-import Quickshell.Bluetooth // The module name is correct now
+import Quickshell.Bluetooth
 import "."
 import Quickshell.Widgets
 
@@ -11,5 +11,5 @@ HoverPill {
 
     property var adapter: Bluetooth.defaultAdapter
     property bool isOn: Bluetooth.defaultAdapter.enabled
-    icon: Quickshell.iconPath(isOn ? "bluetooth-active" : "bluetooth-disabled")
+    icon: Quickshell.iconPath(isOn ? "bluetooth" : "bluetooth-disabled")
 }

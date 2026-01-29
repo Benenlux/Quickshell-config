@@ -10,6 +10,8 @@ Item {
     property string defaultText: ""
     property string text: ""
     property string icon: ""
+    property int iconWidth: 22
+    property int iconHeight: 22
 
     property color backgroundColor: AppStyle.bg3
     property color textColor: AppStyle.fg1
@@ -60,8 +62,8 @@ Item {
 
         IconImage {
             Layout.alignment: Qt.AlignVCenter
-            width: 22
-            height: 22
+            width: root.iconWidth
+            height: root.iconHeight
             source: root.icon
         }
 

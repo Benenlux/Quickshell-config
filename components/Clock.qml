@@ -14,4 +14,5 @@ HoverPill {
     defaultText: Qt.formatDateTime(time.date, "hh:mm")
     text: Qt.formatDateTime(time.date, "hh:mm:ss - dd MMM")
     icon: Quickshell.iconPath("clock")
+    iconHeight: 19
 }

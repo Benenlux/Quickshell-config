@@ -12,7 +12,7 @@ Item {
 
     Rectangle {
         id: connectivity_container
-        color: AppStyle.bg1
+        color: AppStyle.bg_h
         implicitWidth: mainLayout.implicitWidth + 10
         implicitHeight: mainLayout.implicitHeight + 10
         radius: 7
