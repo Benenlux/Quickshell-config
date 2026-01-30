@@ -27,6 +27,9 @@ RowLayout {
         Audio {
             Layout.alignment: Qt.AlignVCenter
         }
+        Microphone {
+            Layout.alignment: Qt.AlignVCenter
+        }
     }
 }
 
