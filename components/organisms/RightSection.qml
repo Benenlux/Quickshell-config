@@ -21,6 +21,13 @@ RowLayout {
             Layout.alignment: Qt.AlignVCenter
         }
     }
+    Container{
+        id: container2
+        implicitHeight: 32
+        Audio {
+            Layout.alignment: Qt.AlignVCenter
+        }
+    }
 }
 
 
