@@ -35,10 +35,10 @@ Scope {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 }
-                MiddleSection{
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                // MiddleSection{
+                //     anchors.horizontalCenter: parent.horizontalCenter
+                //     anchors.verticalCenter: parent.verticalCenter
+                // }
             }
         }
     }
