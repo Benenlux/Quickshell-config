@@ -1,8 +1,11 @@
 import Quickshell
+import QtQuick.Layouts
 import Quickshell.Io
 import QtQuick
 
-import "./bar-widgets/"
+import "./components/organisms"
+import "./components/atoms"
+import "./components/molecules"
 
 Scope {
     id: root
@@ -23,7 +26,16 @@ Scope {
             }
 
             implicitHeight: 40
-            ConnectivityContainer {}
+            Item {
+                id: panelContent
+                anchors.fill: parent
+                anchors.rightMargin: 6
+                anchors.leftMargin: 6
+                RightSection{
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                }
+            }
         }
     }
 }
