@@ -9,8 +9,6 @@ import "../molecules"
 RowLayout {
     spacing: 10
 
-    
-
     Container {
         id: container1
         Wifi {
@@ -22,7 +20,6 @@ RowLayout {
         Battery {
             Layout.alignment: Qt.AlignVCenter
         }
-        Clock{}
     }
 }
 
