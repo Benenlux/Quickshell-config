@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell
 import QtQuick.Layouts
-import ".."
+import "../.."
 
 HoverPill {
     id: clockWidget

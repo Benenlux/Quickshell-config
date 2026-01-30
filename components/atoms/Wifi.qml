@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell
-import "../utils/"
+import "../../utils/"
 
 HoverPill {
     id: wifiPill
