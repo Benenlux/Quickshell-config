@@ -29,9 +29,17 @@ HoverPill {
         }
     }
     
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            root.node.audio.muted = root.isOn;
+        }
+    }
     
     text: {
-        const vol = root.node?.audio?.volume;
-        return (vol !== undefined) ? Math.round(vol * 100) + "%" : "0%";
+        if (isOn){
+            return Math.round(root.node.audio.volume * 100) + "%";
+        }
+        return "Muted";
     }
 }
