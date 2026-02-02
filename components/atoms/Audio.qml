@@ -24,8 +24,10 @@ HoverPill {
             return Quickshell.iconPath("audio-volume-high");
         } else if (volume >= 34){
             return Quickshell.iconPath("audio-volume-medium");
-        } else {
+        } else if (volume < 34 && volume > 0){
             return Quickshell.iconPath("audio-volume-low");
+        } else {
+            return Quickshell.iconPath("audio-volume-muted");
         }
     }
     
