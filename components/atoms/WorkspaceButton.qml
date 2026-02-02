@@ -15,6 +15,7 @@ Item {
     id: root
     property bool hasActive: true;
     property HyprlandWorkspace workspace: null;
+    property bool isHovered: false;
     
     readonly property var toplevels: HyprlandData.hyprlandClientsForWorkspace(root.workspace.id)
     //TODO: Fuzzy find the icon for case sensitivity and different namings
@@ -33,10 +34,16 @@ Item {
     Rectangle {
         id: workspaceIndicator
     
-        width: root.hasActive ? toplevelLayout.implicitWidth + 15 : 25
+        width: toplevelLayout.implicitWidth + 15;
         height: 25
         radius: 40
-        color: root.hasActive ? AppStyle.bg_s : 'transparent'
+        color: {
+            if (root.isHovered) {
+                return AppStyle.bg2;
+            }
+            return root.hasActive ? AppStyle.bg_s : 'transparent'
+        }
+
 
         anchors.centerIn: parent
 
@@ -59,7 +66,20 @@ Item {
                 
             }
         }
-        
 
+    }
+    MouseArea {
+        id: mouseArea
+        anchors.fill: workspaceIndicator
+        hoverEnabled: true
+        onEntered: {
+            root.isHovered = true;
+        }
+        onExited: {
+            root.isHovered = false;
+        }
+        onClicked: {
+            Hyprland.dispatch("workspace " + root.workspace.id);
+        }
     }
 }
