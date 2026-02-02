@@ -1,0 +1,4 @@
+module Utils
+singleton WifiGetter   1.0       WifiGetter.qml
+singleton Brightness   1.0       Brightness.qml
+singleton HyprlandData 1.0       HyprlandData.qml
