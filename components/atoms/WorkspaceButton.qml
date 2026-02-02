@@ -54,7 +54,7 @@ Item {
                 TopLevelButton {
                     icon: Quickshell.iconPath(modelData.initialClass || modelData.class)
                     isActive: root.isWindowActive(modelData.address)
-                    isUrgent: modelData.urgent
+                   
                 }
                 
             }
