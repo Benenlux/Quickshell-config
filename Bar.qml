@@ -43,6 +43,10 @@ Scope {
                 //     anchors.horizontalCenter: parent.horizontalCenter
                 //     anchors.verticalCenter: parent.verticalCenter
                 // }
+                LeftSection{
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
         }
     }
