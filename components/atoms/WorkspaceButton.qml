@@ -43,8 +43,9 @@ Item {
             "code": "visual-studio-code",
             "code-url-handler": "visual-studio-code",
             "jetbrains-idea": "intellij-idea-ultimate-edition",
-            "console": "alacritty",     
-            "kitty": "alacritty",
+            "console": "Alacritty",     
+            "kitty": "Alacritty",
+            "alacritty": "Alacritty",
             "thunar": "system-file-manager",
             "xdg-desktop-portal-gtk": "system-file-manager",
         };
