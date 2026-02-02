@@ -17,7 +17,7 @@ Item {
         id: workspaceLayout
         anchors.centerIn: parent
         
-        spacing: 20
+        spacing: 15
         Repeater {
             model: Hyprland.workspaces
 
