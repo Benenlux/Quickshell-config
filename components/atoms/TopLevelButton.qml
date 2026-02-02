@@ -11,7 +11,6 @@ Item {
     height: 18
     property string icon;
     property bool isActive: true;
-    property bool isUrgent: false;
 
     IconImage {
         id: iconImage
@@ -27,7 +26,7 @@ Item {
         anchors.fill: iconImage
         glowRadius: 2
         spread: 0.2
-        color: root.isUrgent ? "#FF5555" : (root.isActive ? "#88FFFFFF" : "transparent")
+        color: root.isActive ? "#88FFFFFF" : "transparent"
         cornerRadius: 18
     }
     
