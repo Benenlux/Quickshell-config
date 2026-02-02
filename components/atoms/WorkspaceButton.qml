@@ -31,6 +31,30 @@ Item {
 
         return activeAddr === clientAddr;
     }
+
+    function getIcon(className) {
+        if (!className) return Quickshell.iconPath("application-x-executable");
+
+        // Normalize to lowercase for consistent matching
+        const lowerName = className.toLowerCase();
+
+        // Map: "Raw Class Name" : "Desired Icon Name"
+        const iconMap = {
+            "code": "visual-studio-code",
+            "code-url-handler": "visual-studio-code",
+            "jetbrains-idea": "intellij-idea-ultimate-edition",
+            "console": "alacritty",     
+            "kitty": "alacritty",
+            "thunar": "system-file-manager",
+            "xdg-desktop-portal-gtk": "system-file-manager",
+        };
+
+        // Check map first, otherwise use the original name
+        const iconName = iconMap[lowerName] || lowerName;
+
+        // Resolve the path
+        return Quickshell.iconPath(iconName);
+    }
     Rectangle {
         id: workspaceIndicator
     
@@ -58,8 +82,9 @@ Item {
                 id: toplevelRepeater
                 model: root.toplevels
                 Layout.alignment: Qt.AlignVCenter
+                
                 TopLevelButton {
-                    icon: Quickshell.iconPath(modelData.initialClass || modelData.class)
+                    icon: getIcon(modelData.initialClass || modelData.class)
                     isActive: root.isWindowActive(modelData.address)
                    
                 }

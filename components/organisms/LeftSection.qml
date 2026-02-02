@@ -11,6 +11,7 @@ RowLayout{
     spacing: 5
 
     Container{
+        implicitHeight: 32
         Workspaces{
 
         }
