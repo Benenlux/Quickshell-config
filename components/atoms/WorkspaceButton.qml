@@ -43,7 +43,7 @@ Item {
             "code": "visual-studio-code",
             "code-url-handler": "visual-studio-code",
             "jetbrains-idea": "intellij-idea-ultimate-edition",
-            "console": "Alacritty",     
+            "org.gnome.console": "Alacritty",
             "kitty": "Alacritty",
             "alacritty": "Alacritty",
             "thunar": "file-manager",
@@ -92,12 +92,6 @@ Item {
                     icon: getIcon(modelData.initialClass || modelData.class)
                     isActive: root.isWindowActive(modelData.address)
                    
-                }
-                // Text {
-                //     text: modelData.initialClass
-                // }
-                Component.onCompleted: {
-                    console.log("Toplevel:", toplevelRepeater.modelData.initialClass, "Icon Path:", getIcon(modelData.initialClass || modelData.class));
                 }
             }
         }
