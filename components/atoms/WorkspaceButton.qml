@@ -60,7 +60,7 @@ Item {
         id: workspaceIndicator
     
         width: toplevelLayout.implicitWidth + 15;
-        height: 25
+        height: root.toplevels.length ?  25 : 15
         radius: 40
         color: {
             if (root.isHovered) {
