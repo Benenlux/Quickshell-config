@@ -46,11 +46,15 @@ Item {
             "console": "Alacritty",     
             "kitty": "Alacritty",
             "alacritty": "Alacritty",
-            "thunar": "system-file-manager",
-            "xdg-desktop-portal-gtk": "system-file-manager",
+            "thunar": "file-manager",
+            "xdg-desktop-portal-gtk": "ile-manager",
+            "chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-default": "teams-for-linux",
+            "chrome-pkooggnaalmfkidjmlhoelhdllpphaga-default": "ms-outlook",
+            "org.gnome.nautilus": "system-file-manager",
         };
 
         // Check map first, otherwise use the original name
+
         const iconName = iconMap[lowerName] || lowerName;
 
         // Resolve the path
@@ -89,7 +93,12 @@ Item {
                     isActive: root.isWindowActive(modelData.address)
                    
                 }
-                
+                // Text {
+                //     text: modelData.initialClass
+                // }
+                Component.onCompleted: {
+                    console.log("Toplevel:", toplevelRepeater.modelData.initialClass, "Icon Path:", getIcon(modelData.initialClass || modelData.class));
+                }
             }
         }
 
